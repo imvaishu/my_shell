@@ -2,12 +2,11 @@
 
 int handle_built_in(Char_ptr *command, List_ptr alias_list, List_ptr variable_list)
 {
-  // if (is_redirected(command))
-  // {
-  //   printf("in redirection");
-  //   handle_redirection(command);
-  //   return 1;
-  // }
+  if (is_redirected(command))
+  {
+    handle_redirection(command);
+    return 1;
+  }
 
   if (strcmp(command[0], "cd") == 0)
   {
@@ -44,5 +43,6 @@ int handle_built_in(Char_ptr *command, List_ptr alias_list, List_ptr variable_li
     perform_variable(command,variable_list);
     return 0;
   }
+
   return 0;
 }
