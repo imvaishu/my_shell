@@ -6,27 +6,12 @@
 
 #include "alias.h"
 #include "linked_list.h"
-
-/*
-alias a = ls //set alias ["alias", "a", "=", "ls"]
-alias // display
-unalias 
-*/
+#include "parse.h"
 
 int is_command_alias(Char_ptr* args, List_ptr alias_list)
 {
   return search(alias_list, args[0]) > -1
    ? 1 : 0;
-}
-
-int get_length(Char_ptr* args)
-{
-  size_t indx = 0;
-  while (args[indx] != NULL)
-  {
-    indx++;
-  }
-  return indx;
 }
 
 void handle_alias(Char_ptr* args, List_ptr alias_list)
@@ -38,8 +23,6 @@ void handle_alias(Char_ptr* args, List_ptr alias_list)
   }
   display(alias_list);
 }
-
-// [a, dir, NULL] [ls, dir, NULL]
 
 Char_ptr get_actual_command(Char_ptr command, List_ptr alias_list) {
   int position = 0;

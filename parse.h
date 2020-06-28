@@ -3,7 +3,9 @@
 
 typedef char* Char_ptr;
 
-Char_ptr *parse_command(Char_ptr instruction);
+Char_ptr *parse_command(Char_ptr instruction,char splitter);
+
+int get_length(Char_ptr* args);
 
 void ctrl_c_handler(int signal);
 

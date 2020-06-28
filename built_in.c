@@ -1,13 +1,20 @@
 #include "built_in.h"
 
-int handle_built_in(Char_ptr *command, List_ptr alias_list)
+int handle_built_in(Char_ptr *command, List_ptr alias_list, List_ptr variable_list)
 {
+  // if (is_redirected(command))
+  // {
+  //   printf("in redirection");
+  //   handle_redirection(command);
+  //   return 1;
+  // }
+
   if (strcmp(command[0], "cd") == 0)
   {
     chdir(command[1]);
     return 1;
   }
-  
+
   if (is_command_alias(command, alias_list))
   {
     perform_alias(command, alias_list);
@@ -24,6 +31,18 @@ int handle_built_in(Char_ptr *command, List_ptr alias_list)
   {
     handle_unalias(command, alias_list);
     return 1;
+  }
+
+  if (get_length(command) > 1 && !strcmp(command[1], "=") )
+  {
+    handle_set_variable(command, variable_list);
+    return 1;
+  }
+
+  if (is_perform_variable(command))
+  {
+    perform_variable(command,variable_list);
+    return 0;
   }
   return 0;
 }
