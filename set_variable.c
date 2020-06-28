@@ -104,3 +104,18 @@ void perform_variable(Char_ptr* args, List_ptr variable_list)
 
   args[variable_command_indx] = variable_command;
 }
+
+void handle_unset(Char_ptr *command,List_ptr variable_list)
+{
+  if (get_length(command) < 2)
+  {
+    printf("unset: not enough arguments\n");
+    return;
+  }
+  int variable_index =search(variable_list,command[1]);
+  if(remove_at(variable_list,variable_index))
+  {
+    return;
+  }
+  printf("unset: no such element: %s\n", command[1]);
+}

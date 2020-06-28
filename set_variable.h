@@ -11,6 +11,8 @@ int is_perform_variable(Char_ptr* args);
 
 void perform_variable(Char_ptr* args, List_ptr variable_list);
 
+void handle_unset(Char_ptr *command,List_ptr variable_list);
+
 char *join(char *text1, char *text2);
 
 #endif

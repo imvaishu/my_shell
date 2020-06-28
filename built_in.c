@@ -44,5 +44,10 @@ int handle_built_in(Char_ptr *command, List_ptr alias_list, List_ptr variable_li
     return 0;
   }
 
+  if(!strcmp(command[0],"unset"))
+  {
+    handle_unset(command,variable_list);
+    return 1;
+  }
   return 0;
 }
