@@ -25,11 +25,17 @@ int is_redirected(Char_ptr *command)
   }
   return 0;
 }
-//['ls','>','file name']
+//['ls','>>','file name']
 void handle_redirection(Char_ptr *command)
 {
   int file_discriptor;
+  if(!strcmp(command[1],">")){
   file_discriptor = open(command[2], O_CREAT | O_RDWR, 0666);
+  }
+  else
+  {
+   file_discriptor = open(command[2],O_APPEND | O_RDWR);
+  }
   int save_output_stream = dup(1);
   dup2(file_discriptor, 1);
   close(file_discriptor);
