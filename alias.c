@@ -29,7 +29,7 @@ Char_ptr get_actual_command(Char_ptr command, List_ptr alias_list) {
   Node_ptr iterator = alias_list->head;
   while (iterator != NULL)
   {
-    if (!strcmp(command, iterator->alias))
+    if (!strcmp(command, iterator->var))
     {
       return iterator->command;
     }

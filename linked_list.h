@@ -12,7 +12,7 @@ typedef enum
 typedef struct node
 {
   Char_ptr command;
-  Char_ptr alias;
+  Char_ptr var;
   struct node *next;
 } Node;
 

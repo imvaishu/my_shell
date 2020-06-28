@@ -17,7 +17,7 @@ Node_ptr create_node(char* command, char* alias)
 {
   Node_ptr new_node = malloc(sizeof(Node));
   new_node->command = command;
-  new_node->alias = alias;
+  new_node->var = alias;
   new_node->next = NULL;
   return new_node;
 }
@@ -43,7 +43,7 @@ void display(List_ptr list)
   Node_ptr p_walk = list->head;
   while(p_walk != NULL)
   {
-    printf("%s=%s\n",p_walk->alias, p_walk->command);
+    printf("%s=%s\n",p_walk->var, p_walk->command);
     p_walk = p_walk->next;
   }
 } 
@@ -165,7 +165,7 @@ int search(List_ptr list, char* alias)
   Node_ptr iterator = list->head;
   while (iterator != NULL)
   {
-    if (!strcmp(alias, iterator->alias))
+    if (!strcmp(alias, iterator->var))
     {
       return position;
     }

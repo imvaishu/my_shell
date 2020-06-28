@@ -44,7 +44,7 @@ Char_ptr get_variable_command(Char_ptr command, List_ptr variable_list) {
   Node_ptr iterator = variable_list->head;
   while (iterator != NULL)
   {
-    if (!strcmp(command, iterator->alias))
+    if (!strcmp(command, iterator->var))
     {
       return iterator->command;
     }
