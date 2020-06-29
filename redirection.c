@@ -1,10 +1,3 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <sys/wait.h>
-
-#include <stdlib.h>
-#include <fcntl.h>
 #include "redirection.h"
 
 int is_redirected(Char_ptr *command)
@@ -23,7 +16,7 @@ int is_redirected(Char_ptr *command)
   }
   return 0;
 }
-//['ls','>>','file name']
+
 void handle_redirection(Char_ptr *command)
 {
   int file_discriptor;

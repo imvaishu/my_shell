@@ -1,9 +1,3 @@
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-#include <sys/wait.h>
-#include <stdlib.h>
-
 #include "alias.h"
 #include "linked_list.h"
 #include "parse.h"
@@ -36,22 +30,12 @@ Char_ptr get_actual_command(Char_ptr command, List_ptr alias_list) {
     position++;
     iterator = iterator->next;
   }
-  return "wrong command";
+  return command;
 }
 
 void perform_alias(Char_ptr* args, List_ptr alias_list)
 {
-  Char_ptr command = get_actual_command(args[0], alias_list); 
-  args[0] = command;
-  int pid = fork();
-  if (pid == 0)
-  {
-  execvp(args[0], args);
-  exit(-1);
-  } else
-  {
-    wait(&pid);
-  }
+  args[0] = get_actual_command(args[0], alias_list);
 }
 
 void handle_unalias(Char_ptr* args, List_ptr alias_list)

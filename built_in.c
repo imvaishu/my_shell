@@ -17,7 +17,7 @@ int handle_built_in(Char_ptr *command, List_ptr alias_list, List_ptr variable_li
   if (is_command_alias(command, alias_list))
   {
     perform_alias(command, alias_list);
-    return 1;
+    return 0;
   }
 
   if (!strcmp(command[0], "alias"))
